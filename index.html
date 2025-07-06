@@ -73,7 +73,7 @@
     <script>
         document.getElementById('searchButton').addEventListener('click', function() {
             const query = document.getElementById('searchInput').value;
-            const url = `https://api.kimkiro.my.id/otakudesu/search?query=${encodeURIComponent(query)}`;
+            const url = `https://ww3.anoboy.app/?s=${encodeURIComponent(query)}`;
 
             fetch(url)
                 .then(response => {
