@@ -81,7 +81,7 @@
             `;
             
             try {
-                let apiUrl = 'https://api.kimkiro.my.id/animeindo/search' + encodeURIComponent(query);
+                let apiUrl = 'https://api.kimkiro.my.id/otakudesu/search?q=' + encodeURIComponent(query);
                 
                 // Fetch HTML content from the site
                 const response = await fetch(apiUrl, {
