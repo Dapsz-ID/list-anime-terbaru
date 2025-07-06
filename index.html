@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Terbaru Dapsz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .anime-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+        }
+
+        .anime-item img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+
+        .anime-item h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anime Terbaru</h1>
+    </header>
+    <main id="anime-list">
+        <!-- Daftar anime akan ditampilkan di sini -->
+    </main>
+    <script>
+        const apiUrl = 'https://weeb-scraper.onrender.com/api/anoboy';
+
+        async function fetchAnime() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                displayAnime(data.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayAnime(animeList) {
+            const animeContainer = document.getElementById('anime-list');
+            animeList.forEach(anime => {
+                const animeItem = document.createElement('div');
+                animeItem.className = 'anime-item';
+                animeItem.innerHTML = `
+                    <img src="${anime.thumbnail}" alt="${anime.title}">
+                    <div>
+                        <h2>${anime.title}</h2>
+                        <p>Upload: ${anime.upload_time}</p>
+                        <a href="${anime.detail_url}" target="_blank">Detail</a>
+                    </div>
+                `;
+                animeContainer.appendChild(animeItem);
+            });
+        }
+
+        fetchAnime();
+    </script>
+</body>
+  </html>
+  
